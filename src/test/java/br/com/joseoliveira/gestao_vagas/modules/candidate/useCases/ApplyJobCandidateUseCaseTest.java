@@ -74,7 +74,8 @@ public class ApplyJobCandidateUseCaseTest {
         when(candidateRepository.findById(idCandidate)).thenReturn(Optional.of(new CandidateEntity()));
         when(jobRepository.findById(idJob)).thenReturn(Optional.of(new JobEntity()));
 
-        when(applyJobRepository.save(any(ApplyJobEntity.class))).thenReturn(new ApplyJobEntity());
+// Passamos o 'applyJob' no return, pois ele já tem o ID preenchido pela linha 65
+        when(applyJobRepository.save(any(ApplyJobEntity.class))).thenReturn(applyJob);
 
         var result = applyJobCandidateUseCase.execute(idCandidate, idJob);
 
